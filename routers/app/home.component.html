@@ -1,0 +1,104 @@
+<html>
+	
+	<title>Facebook Style Homepage Design using HTML and CSS</title>
+	<head>
+		
+		<meta name="Description" content="Facebook Style Homepage Design with Login Form registration for using html and CSS"/>
+
+<meta name="Keywords" content="free, tutorial, on, Java programming, jsp, ejb, html, css, xml, java script, jquery, ajax, php, sql, mysql, database, jdbc, 
+odbc, spring, struts, hibernate, array, ANT, servlet, awt, code, programe, programming, Latest,facebook script, google script, twitter script,ecommerce,  Technologies, Free,  Tutorials, References, Examples, 
+coder glass, coderglas, coder"/>
+
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="933988933316672" />
+<meta property="og:site_name" content="www.coderglass.com" />
+<meta name="author" content="coderglass.com">
+	</head>
+	<body>
+		<div class="fb-header-base">
+		</div>
+		
+		<div class="fb-header">
+			<form [formGroup]="form2" (ngSubmit)="login()">
+		<!--	<div id="img1" class="fb-header"><img src="facebook.png" /></div>
+			<div id="form1" class="fb-header">Email or Phone<br>
+			<input placeholder="Email" type="mail" name="name" /><br>
+			<input type="checkbox" />keep me logged in</div>-->
+			
+			
+       	<input type="text"  
+			placeholder="username1"
+			 name="userUsername" [(ngModel)]="userUsername"  formControlName="userUsername">
+
+			 <input type="text"  
+			placeholder="password1"
+			 name="userpassword" [(ngModel)]="userpassword"  formControlName="userpassword">
+
+
+			 <button class="btn btn-primary" type="submit">Login</button><div>Friends Book</div>
+			</form>
+		
+		</div>
+		
+	
+		<div class="fb-body">
+			
+			<div id="intro2" class="fb-body">Create an account</div>
+		</div>
+	<!--		<div id="img2" class="fb-body"><img src="world.png" /></div>
+			<div id="intro3" class="fb-body">It's free and always will be.</div>
+			<div id="form3" class="fb-body">
+				<input placeholder="First Name" type="text" id="namebox" name="name1" />
+				<input placeholder="Last Name" type="text" id="namebox"  /> <br>
+				<input placeholder="Emai" type="text" id="mailbox" /><br>
+				<input placeholder="Re-enter email" type="text" id="mailbox"  /><br>
+				<input placeholder="Password" type="password" id="mailbox"  /><br>
+				<input type="date" id="namebox"  /><br><br>
+				<input type="radio" id="r-b" name="sex" value="male" />Male
+				<input type="radio" id="r-b" name="sex" value="female" />Female<br><br>
+				<p id="intro4">By clicking Create an account, you agree to our Terms and that 
+				you have read our Data Policy, including our Cookie Use.</p>
+				<input type="submit" class="button2" value="Create an account" />
+				<br><hr>
+				<p id="intro5">Create a Page for a celebrity, band or business.</p>
+				
+			</div>
+			
+		</div>-->
+<div id="form3" class="fb-body">
+
+		
+<form [formGroup]="form" (ngSubmit)="signUp()">
+   
+<div class="form-group">
+	
+		
+        <!--<label for="firstName">First Name</label>-->
+        <input type="text"  placeholder="Please enter First Name" class="form-control" name="firstName" [(ngModel)]="firstName"  formControlName="firstName"><br/>
+        
+       <!-- <label for="lastname">Last Name</label>-->
+        <input type="text"  placeholder="Please enter Last Name" class="form-control" name="lastname" [(ngModel)]="lastname"  formControlName="lastname"><br/>
+        
+	
+       <!--  <label for="email">Email</label>-->
+        <input type="text"  placeholder="Please enter Email address" class="form-control" name="email" [(ngModel)]="email"  formControlName="email"><br/>
+  
+       <!--  <label for="mobileNr">Mobile Nr</label>-->
+        <input type="text"  placeholder="Please enter Mobile number" class="form-control" name="mobileNr" [(ngModel)]="mobileNr"  formControlName="mobileNr"><br/>
+   
+       <!--  <label for="password">Password</label>-->
+        <input type="text"  placeholder="Please enter Password" class="form-control" name="password" [(ngModel)]="password"  formControlName="password"><br/>
+    </div>
+	
+    <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>
+</div>
+
+		<div class="fb-body-footer">
+				<div id="fb-body-footer-base" class="fb-body-footer">English (UK)<br><hr>
+				Sign Up	Log In	&copy; www.coderglass.com &nbsp;&nbsp; Design by Varun Singh</div>
+			</div>
+	</body>
+	
+</html>
