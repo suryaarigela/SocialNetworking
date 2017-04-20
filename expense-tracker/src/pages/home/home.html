@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+     Expense Tracker  - {{sum | currency:'EUR':true}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+ <ion-list>
+   <button ion-item *ngFor="let expense of expenses" (click)="onItemClick(expense)">
+     <h2>{{expense.amount | currency:'EUR':true}}</h2>
+     <p>
+     {{expense.date}}- {{expense.description}}
+    
+     </p>
+     
+     <ion-note item-right> <ion-icon name="bus"></ion-icon> {{expense.category}}</ion-note>
+   </button>
+ </ion-list>
+ <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="onAddClick()"><ion-icon name="add"></ion-icon></button>
+     </ion-fab>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary" >
+    <ion-title text-align="center">Designed by Surya Arigela</ion-title>
+  </ion-toolbar>
+</ion-footer>
+
