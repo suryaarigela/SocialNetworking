@@ -1,5 +1,5 @@
 export interface Category{
-      catid?:string;
-      categories:string[];
-     
+      id?:string;
+      name:string;
+      checked:string;
 }

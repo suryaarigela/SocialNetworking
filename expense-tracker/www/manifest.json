@@ -1,10 +1,10 @@
 {
-  "name": "Expense",
-  "short_name": "Expense",
+  "name": "Ionic",
+  "short_name": "Ionic",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/img/expense.png",
+    "src": "assets/imgs/logo.png",
     "sizes": "512x512",
     "type": "image/png"
   }],

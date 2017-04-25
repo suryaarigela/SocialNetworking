@@ -1,55 +1,103 @@
 import  uuidV4 from 'uuid/v4';
 import {Expense} from './expense.model';
-import Dexie from 'dexie';
 import {Category} from './category.model';
+import {Http} from '@angular/http';
+import {Injectable} from '@angular/core';
+import {Headers} from '@angular/http';
+import 'rxjs/add/operator/toPromise';
 console.log('UUIS ',uuidV4());
-
-export class SettingsService extends Dexie{
+@Injectable()
+export class SettingsService{
     static nextId:number =5;
   //    expenses : Expense[]=[];
-   categories: Dexie.Table<Category, string>;
+  url='http://192.168.178.23:8081/spring-social-networking/rest/expenses'
    cats=[];
+   cat :Category[];
 
-   constructor(){
-       super('expense_categories');
-       this.version(1).stores({
-           categories:'catid'
-       });
+   constructor(private _http: Http){
+       
    }
 
-  
-
-   updateCategories(category: Category){
-      // const index=this.expenses.findIndex(it=> it.id === expense.id);
-       //this.expenses[index]=expense;
-       //this.storageExpenses();
-        this.categories.update(category.catid,category);
-   }
 
    addCategories(category: Category){
-      this.getCategories();
-       category.catid=uuidV4();
-       this.categories.add(category);
+       console.log('addCategories');
+       let isAvail:boolean=false;
+    //  this.getCategories().then(existingcats => console.log(existingcats));
+      this.cat.forEach(element => {
+          isAvail=true;
+      });
+      if(!isAvail){
+        console.log('adding');  
+       category.id=uuidV4();
+       this.addCat(category);
+      }
       // this.expenses.push(expense);
        //this.storageExpenses();
    }
 
   
+  ionViewWillEnter(){
+ this.getCategories().then(res => this.cat=res.json());
+  
+}
+ 
+ addCat(category){
+       var body=JSON.stringify(category);
+        var headers = new Headers();
+        if(category.id == undefined){
+          category.id=uuidV4();
+        }
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin','*');
+      this._http
+        .post(this.url+'/category/add',
+          body, {
+            headers: headers
+          })
+          .subscribe(data => {
+                alert('ok');
+          }, error => {
+              console.log(JSON.stringify(error.json()));
+          });
+ }
 
-   getCategories():Dexie.Promise<Category[]>{
-       return this.categories.toArray();
+  updateCat(category){
+       var body=JSON.stringify(category);
+        var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Access-Control-Allow-Origin','*');
+      this._http
+        .post(this.url+'/category/update',
+          body, {
+            headers: headers
+          })
+          .subscribe(data => {
+                alert('ok');
+          }, error => {
+              console.log(JSON.stringify(error.json()));
+          });
+ }
+
+   getCategories(){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      headers.append('Access-Control-Allow-Origin','*');
+       return  this._http.get(this.url+"/category/all", {
+            headers: headers
+          }).toPromise();
    }
 
- private loadStorageCategories():Category[]{
-     const categoriesFromStorage= localStorage.getItem('categories');
-     if(categoriesFromStorage){
-         return JSON.parse(categoriesFromStorage);    
-     }else{
-         return [];
-     }
+    getActiveCategories(){
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      headers.append('Access-Control-Allow-Origin','*');
+       return  this._http.get(this.url+"/category/all/active", {
+            headers: headers
+          }).toPromise();
+   }
 
- }
- //  private storageExpenses(){
-   //    localStorage.setItem('expenses',JSON.stringify(this.expenses));
-  // }
+  
+
+
+ 
 }

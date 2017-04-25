@@ -8,8 +8,9 @@ import {Expense} from '../../app/expense.model';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  expenses:Expense[];
+  expenses;
    sum:number;
+   month:string;
   constructor(public navCtrl: NavController,private expenseService: ExpenseService) {
   //this.getTotalExpense();
   }
@@ -18,7 +19,7 @@ export class HomePage {
      let final:string;
   let amount:string;let a:number;let b:number;
     this.expenses.forEach(element => {
-   
+   console.log("***********"+element)
   a=element.amount;
   if(b!= undefined){
      b=parseFloat(b+"")+parseFloat(a+"");
@@ -34,7 +35,7 @@ export class HomePage {
 
 ionViewWillEnter(){
  
- this.expenseService.getExpenses().then(expenses => this.expenses=expenses);
+ this.expenseService.getExpenses().then(res =>this.expenses=res.json() );
   this.getTotalExpense();
 }
   onItemClick(expense : Expense){
@@ -47,5 +48,11 @@ ionViewWillEnter(){
 onAddClick(){
   console.log('add new Expense')
   this.navCtrl.push(DetailPage);
+}
+
+selectMonth(){
+  console.log('Selected month'+this.month);
+  this.expenseService.getSpecificExpenses(this.month).then(res =>this.expenses=res.json() );
+   this.getTotalExpense();
 }
 }

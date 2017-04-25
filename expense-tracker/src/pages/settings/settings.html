@@ -10,11 +10,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Settings</ion-title>
-    <ion-buttons end>
+    <!--<ion-buttons end>
        <button ion-button icon-only (click)="updateSavings()" [disabled]="!f.valid">
         <ion-icon name="checkmark"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons>-->
   </ion-navbar>
 </ion-header>
 
@@ -27,29 +27,23 @@
  
 
  
-<ion-item>
-  <ion-label> Transport</ion-label>
-  <ion-toggle  checked="false" [(ngModel)]="transport" name="transport"></ion-toggle>
-</ion-item>
-<ion-item>
-  <ion-label> Food</ion-label>
-  <ion-toggle  checked="false" [(ngModel)]="food" name="food"></ion-toggle>
-</ion-item>
-<ion-item>
-  <ion-label> Grossery</ion-label>
-  <ion-toggle  checked="false" [(ngModel)]="grossery" name="grossery"></ion-toggle>
-</ion-item>
-<ion-item>
-  <ion-label> Fuel</ion-label>
-  <ion-toggle  checked="false" [(ngModel)]="fuel" name="fuel"></ion-toggle>
-</ion-item>
-<ion-item>
-  <ion-label> Movies</ion-label>
-  <ion-toggle  checked="false" [(ngModel)]="movies" name="movies"></ion-toggle>
-</ion-item>
+<ion-item *ngFor="let categ of cat">
+  <p>{{categ.name}}</p>
+  <ion-label>{{categ.name}} </ion-label>
+  <ion-toggle  checked="{{categ.checked}}" (ionChange)="notify(categ);event($event)"> [(ngModel)]="category" name="$categ.name"></ion-toggle>
+</ion-item> 
+
+
+<!--
+    <ion-item *ngFor="let categ of cat">
+      {{ categ.name }}
+    </ion-item>
+ -->
 
 
 </ion-list>
   </form>
-
+ <ion-fab right bottom>
+    <button ion-fab color="primary" (click)="onAddClick()"><ion-icon name="add"></ion-icon></button>
+     </ion-fab>
 </ion-content>
