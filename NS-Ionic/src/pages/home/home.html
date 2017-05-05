@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <ion-icon name="train"></ion-icon> Your travel guide
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding background-image="ns_reisplanner.jpg">
+
+  <ion-card>
+
+  <ion-card-header>
+    <h4>Plan your travel</h4>
+  </ion-card-header>
+
+  <ion-card-content>
+   
+ <form [formGroup]="loginForm" (submit)="login($event)">
+            <ion-item>
+                <ion-label floating>Enter From station</ion-label>
+                <ion-input type="text" formControlName="fromStation"></ion-input>
+            </ion-item>
+
+          <ion-item>
+                <ion-label floating>Enter To station</ion-label>
+                <ion-input type="text" formControlName="toStation"></ion-input>
+            </ion-item>
+    
+     <ion-item>
+    <ion-label stacked>Enter Date</ion-label>
+    <ion-datetime  displayFormat="MMM DD, YYYY" pickerFormat="MMM DD YYYY" formControlName="date" name="date" required></ion-datetime>
+  </ion-item>
+
+   <ion-item>
+    <ion-label stacked>Enter Time</ion-label>
+    <ion-datetime  displayFormat="HH:mm" pickerFormat="HH mm" formControlName="time" name="time" required></ion-datetime>
+  </ion-item>
+
+
+            <div padding>
+                <button ion-button  type="submit" [disabled]="!loginForm.valid">Plan</button>
+            </div>
+        </form>
+
+  </ion-card-content>
+
+</ion-card>
+
+   
+
+</ion-content>
