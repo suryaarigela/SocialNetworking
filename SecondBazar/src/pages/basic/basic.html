@@ -1,0 +1,68 @@
+<!--
+  Generated template for the Basic page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+ 
+  <ion-navbar class="background">
+     <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+      Seconds Bazar
+      <ion-icon name="basket"></ion-icon>
+    </ion-title>
+    
+  </ion-navbar>
+  <ion-item>
+    <ion-avatar item-left>
+      <img src="assets/img/surya.jpg">
+    </ion-avatar>
+    <h2>{{globalUserName}}</h2>
+  </ion-item>
+  
+</ion-header>
+
+<ion-content padding>
+
+<ion-menu [content]="mycontent" enable-menu-with-back-views="true">
+
+    <ion-content *ngIf="!isUserLoggedIn">
+        <ion-list>
+             <button ion-item menuClose (click)="openPage(placead)">
+                Place ad
+            </button>
+            <button ion-item menuClose (click)="openPage(posts)">
+                Posts
+            </button>
+            <button ion-item menuClose (click)="openPage(login)">
+                login
+            </button>
+             <button ion-item menuClose (click)="openPage(signup)">
+                sign-up
+            </button>
+        </ion-list>
+    </ion-content>
+
+    <ion-content *ngIf="isUserLoggedIn">
+        <ion-list>
+             <button ion-item menuClose (click)="openPage(placead)">
+                Place ad
+            </button>
+            <button ion-item menuClose (click)="openPage(posts)">
+                Posts
+            </button>
+            <button ion-item menuClose (click)="logout()">
+                LogOut
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+
+</ion-content>

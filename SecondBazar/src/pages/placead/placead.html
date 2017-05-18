@@ -1,0 +1,87 @@
+<!--
+  Generated template for the Placead page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title align="center">Place Ad</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding background-color="green">
+ <!--<button ion-button color="primary" (click)="accessGal()">Open Gallery</button>
+ <img [src]="base64Image" *ngIf="base64Image" />-->
+ <ion-title align="left">1.Title and Condition</ion-title>
+ <ion-item>
+    <ion-label>Title</ion-label>
+    <ion-input [(ngModel)]="title" type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-list>
+  <ion-item>
+    <ion-label>Condition</ion-label>
+    <ion-select [(ngModel)]="condition" multiple="false" cancelText="Cancel" okText="Okay!">
+       <ion-option value="Choose" selected="true">Choose..</ion-option>
+      <ion-option value="New" >New</ion-option>
+      <ion-option value="As good as new">As good as new</ion-option>
+      <ion-option value="Used" >Used</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Type</ion-label>
+    <ion-select [(ngModel)]="type" multiple="false" cancelText="Cancel" okText="Okay!">
+       <ion-option value="Choose" selected="true">Choose..</ion-option>
+      <ion-option value="type1" >Type1</ion-option>
+      <ion-option value="type2">Type2</ion-option>
+      <ion-option value="type3" >Type3</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-list>
+  <ion-item>
+    <ion-label>Brand</ion-label>
+    <ion-select [(ngModel)]="brand" multiple="false" cancelText="Cancel" okText="Okay!">
+       <ion-option value="Choose" selected="true">Choose..</ion-option>
+      <ion-option value="brand1" >Brand1</ion-option>
+      <ion-option value="brand2">Brand2</ion-option>
+      <ion-option value="brand3" >Brand3</ion-option>
+    </ion-select>
+  </ion-item>
+</ion-list>
+
+<ion-title align="left">2.Write Ad Text</ion-title>
+<ion-textarea  class="glowing-border" style="border:groove 6px grey;" rows="4" [(ngModel)]="noteContent"></ion-textarea>
+
+<ion-title align="left">3.Price</ion-title>
+<ion-item>
+    <ion-label>Asking Prize Rs:</ion-label>
+    <ion-input [(ngModel)]="askingPrice" type="text" value=""></ion-input>
+  </ion-item>
+<ion-list radio-group [(ngModel)]="priceType">
+  <ion-item>
+    <ion-label>Fixed Price</ion-label>
+    <ion-radio value="fixed"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Allow free offer</ion-label>
+    <ion-radio value="free"></ion-radio>
+  </ion-item>
+  <ion-item>
+    <ion-label>Start offer from</ion-label>
+    <ion-radio value="priceFrom"></ion-radio>
+     
+  </ion-item>
+  <ion-item><ion-label>Price From Rs:</ion-label>
+    <ion-input [(ngModel)]="priceFrom" type="text" value=""></ion-input></ion-item>
+</ion-list>
+
+</ion-content>
